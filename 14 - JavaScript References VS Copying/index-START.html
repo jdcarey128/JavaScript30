@@ -8,6 +8,18 @@
 
   <script>
     // start with strings, numbers and booleans
+    // let age = 100;
+    // let age2 = age; 
+
+    // console.log(age, age2);
+    // age = 200; 
+    // console.log(age, age2);
+
+    // let name = 'Wes';
+    // let name2 = name; 
+    // console.log(name, name2);
+    // name = 'wesley';
+    // console.log(name, name2);
 
     // Let's say we have an array
     const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
@@ -27,13 +39,20 @@
     // So, how do we fix this? We take a copy instead!
 
     // one way
+    // const team2 = players.slice();
 
     // or create a new array and concat the old one in
+    // const team2 = [].concat(players);
 
     // or use the new ES6 Spread
+    // const team2 = [...players];
 
     // now when we update it, the original one isn't changed
-
+    
+    // const team2 = Object.assign([], players);
+    const team2 = Array.from(players);
+    team2[3] = 'Lux';
+    console.log(players, team2);
     // The same thing goes for objects, let's say we have a person object
 
     // with Objects
@@ -43,7 +62,35 @@
     };
 
     // and think we make a copy:
+    // const captain = person; 
+    // captain.number = 99;
+    console.log(person);
+    const cap2 = Object.assign({}, person, { number: 99, age: 12 });
+    console.log(cap2)
 
+    const cap3 = {...person, number: 20};
+    console.log(cap3);
+
+    const wes = {
+      name: 'Wes', 
+      age: 100, 
+      social: {
+        twitter: '@wesbos', 
+        facebook: 'wesbos.developer'
+      }
+    };
+    console.clear();
+    // console.log(wes);
+
+    const dev = Object.assign({}, wes);
+    dev.name = 'wesley'; 
+    // dev.social.twitter = 'coolman'
+
+    console.log(wes, dev);
+
+    const dev2 = JSON.parse(JSON.stringify(wes));
+    dev2.social.twitter = '@coolman'
+    console.log(wes, dev, dev2);
     // how do we take a copy instead?
 
     // We will hopefully soon see the object ...spread
